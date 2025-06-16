@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I had the pleasure to give a lecture on "Vulnerabilities of Large Language Models" to Master's students at the University of Edinburgh.
+![Image](/assets/img/talk.png){:height="20px"} I had the pleasure to give a lecture on "Vulnerabilities of Large Language Models" to Master's students at the University of Edinburgh.

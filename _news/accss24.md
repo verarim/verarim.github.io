@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I gave a keynote at [The Security and Trustworthiness of AI workshop](https://www.utwente.nl/en/eemcs/accss-workshop-security-ai/) in the Netherlands on "The Ambivalence of Deep Learning in Cybersecurity: Balancing Promises and Pitfalls".
+![Image](/assets/img/talk.png){:height="20px"} I gave a keynote at [The Security and Trustworthiness of AI workshop](https://www.utwente.nl/en/eemcs/accss-workshop-security-ai/) in the Netherlands on "The Ambivalence of Deep Learning in Cybersecurity: Balancing Promises and Pitfalls".

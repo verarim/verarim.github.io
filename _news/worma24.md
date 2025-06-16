@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Fabio Pierazzi, Savino Dambra, and I organized [the 3rd Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2024/) co-located with [IEEE EuroS&P 2024](https://www.ieee-security.org/TC/EuroSP2024/) in Vienna!
+![Image](/assets/img/event.png){:height="20px"} Fabio Pierazzi, Savino Dambra, and I organized [the 3rd Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2024/) co-located with [IEEE EuroS&P 2024](https://www.ieee-security.org/TC/EuroSP2024/) in Vienna!

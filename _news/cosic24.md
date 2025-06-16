@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Together with Lieven Desmet, I presented an overview on "Cybersecurity & AI" at the [COSIC course](https://www.esat.kuleuven.be/cosic/) in Leuven.
+![Image](/assets/img/talk.png){:height="20px"} Together with Lieven Desmet, I presented an overview on "Cybersecurity & AI" at the [COSIC course](https://www.esat.kuleuven.be/cosic/) in Leuven.
