@@ -32,8 +32,9 @@ nav_order: 3
 
 - USENIX Security -- 2025.
 - IEEE SaTML -- 2025, 2024.
-- ACM CCS -- 2024.
 - PoPETS -- 2025, 2024, 2023.
+- DIMVA -- 2025.
+- ACM CCS -- 2024.
 - IEEE EuroS&P -- 2022, 2021, 2020.
 - WOOT -- 2025.
 - WiSec -- 2023, 2022.
