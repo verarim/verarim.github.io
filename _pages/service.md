@@ -7,23 +7,25 @@ nav: true
 nav_order: 3
 ---
 
-## Distinguished Reviewer Awards
+## Reviewing Awards
 
-- ![Image](/assets/img/award.png){:height="20px"} IEEE Conference on Secure and Trustworthy Machine Learning (IEEE SatML) -- 2025.
-- ![Image](/assets/img/award.png){:height="20px"} IEEE European Symposium on Security and Privacy (IEEE EuroS&P) -- 2021.
-- ![Image](/assets/img/award.png){:height="20px"} IEEE European Symposium on Security and Privacy (IEEE EuroS&P) -- 2020.
+- ![Image](/assets/img/award.png){:height="20px"} Notable Reviewer at [USENIX Security](https://www.usenix.org/conference/usenixsecurity25) -- 2025.
+- ![Image](/assets/img/award.png){:height="20px"} Distinguished Reviewer at [IEEE SatML](https://satml.org/2025/) -- 2025.
+- ![Image](/assets/img/award.png){:height="20px"} Distinguished Reviewer at [IEEE EuroS&P](https://www.ieee-security.org/TC/EuroSP2021/) -- 2021.
+- ![Image](/assets/img/award.png){:height="20px"} Distinguished Reviewer at [IEEE EuroS&P](https://www.ieee-security.org/TC/EuroSP2020/) -- 2020.
 
 ---
 ## Event Organization
 
+- Workshop General Co-Chair: [IEEE EuroS&P](https://eurosp2026.ieee-security.org/cfw.html), 2026.
 - Co-Organizer: [Dagstuhl Seminar on Security and Privacy of Large Language Models](https://www.dagstuhl.de/en/seminars/seminar-calendar/seminar-details/25461), 2025.
 - Organizing Co-Chair: [PhD Summer School on Security and Privacy in the Age of AI](https://cybersecurity-research.be/summer-school-on-security-privacy-in-the-age-of-ai-2025), 2025.
-- Program Co-Chair, [4th Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2025/), 2025.
+- Program Co-Chair: [4th Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2025/), 2025.
 - Organizing Co-Chair: [PhD Summer School on Security and Privacy in the Age of AI](https://cybersecurity-research.be/summer-school-on-security-privacy-in-the-age-of-ai-2024), 2024.
-- Program Co-Chair, [3rd Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2024/), 2024.
+- Program Co-Chair: [3rd Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2024/), 2024.
 - Organizing Co-Chair: PhD Summer School on Security and Privacy in the Age of AI, 2023.
-- Mentoring Co-Chair, IEEE EuroS&P, 2023.
-- Posters Co-Chair, IEEE EuroS&P, 2022.
+- Mentoring Co-Chair: IEEE EuroS&P, 2023.
+- Posters Co-Chair: IEEE EuroS&P, 2022.
 
 ---
 
@@ -31,12 +33,13 @@ nav_order: 3
 #### Technical Program Committee Member
 
 - USENIX Security -- 2025.
-- IEEE SaTML -- 2025, 2024.
-- PoPETS -- 2025, 2024, 2023.
-- DIMVA -- 2025.
+- IEEE SaTML -- 2026, 2025, 2024.
 - ACM CCS -- 2024.
+- PoPETS -- 2025, 2024, 2023.
 - IEEE EuroS&P -- 2022, 2021, 2020.
+- DIMVA -- 2025.
 - WOOT -- 2025.
+- WPES at CCS -- 2024, 2020.
 - WiSec -- 2023, 2022.
 - AISec at ACM CCS -- 2025, 2024, 2023.
 - MLCS at ECML-PKDD -- 2025, 2023.
@@ -44,17 +47,16 @@ nav_order: 3
 - SecTL @AsiaCCS -- 2024, 2023.
 - SECURWARE -- 2023.
 - S2RAI at SAT -- 2024.
-- WPES at CCS -- 2024, 2020.
 - NSPW -- 2020.
 
 ---
 
-## Journal Reviewing
+## Journal Reviewing and Editing
 
 - IEEE Transactions on Dependable and Secure Computing (TDSC).
 - Transactions on Information Forensics & Security (TIFS).
 - Computer Networks.
-- Associate Editor: Digital Threats: Research and Practice ACM DTRAP -- 2025, 2024.
+- Associate Editor: Digital Threats: Research and Practice ACM DTRAP -- 2024-2026.
 - Guest Editor: Mathematics, Special Issue on Artificial Intelligence and Network Security: Trends and Challenges -- 2023.
 
 ---
