@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- https://getbootstrap.com/docs/4.0/components/carousel/ -->
+  <title>Quotes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body { background: #f7f6f3; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .quote-card { background: #fff; border: 1px solid #e5e3de; border-radius: 12px; padding: 2.5rem 2.5rem 2rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; min-height: 160px; }
+    .carousel-indicators li { background-color: #aaa; }
+    .carousel-indicators .active { background-color: #555; }
+
+    blockquote {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+      width: 500px;
+      margin: 0.25em 0;
+      padding: 0.25em 40px;
+      line-height: 1.45;
+      position: relative;
+      color: #383838;
+    }
+
+    blockquote:before {
+      display: block;
+      content: "\201C";
+      font-size: 80px;
+      position: absolute;
+      left: -20px;
+      top: -20px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+<div class="container" style="max-width: 640px;">
+  <div id="quoteCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#quoteCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#quoteCarousel" data-slide-to="1"></li>
+      <li data-target="#quoteCarousel" data-slide-to="2"></li>
+      <li data-target="#quoteCarousel" data-slide-to="3"></li>
+      <li data-target="#quoteCarousel" data-slide-to="4"></li>
+      <li data-target="#quoteCarousel" data-slide-to="5"></li>
+      <li data-target="#quoteCarousel" data-slide-to="6"></li>
+      <li data-target="#quoteCarousel" data-slide-to="7 "></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="quote-card">
+          <blockquote>
+            Excellent job by the organisers! Compliments to the entire team!
+          </blockquote>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            The event was great, thank you for organizing this unique summer school!
+          </blockquote>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            The event was very satisfactory to me.
+          </blockquote>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            It was a fantastic event! A very good balance of different topics. Interesting speakers, interesting audience!
+            Having different viewpoints from a technical, academic, industry and legal standpoint was a huge added value.
+          </blockquote>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            Simply amazing :)
+          </blockquote>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            The event was amazing! The speakers were on point and it covered such wide, relevant subject matter. I particularly loved the industry session. 
+          </blockquote>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            I met some incredible people. PhD students, professors, employees of industry leading companies and many other interesting people. Very informative overview of most recent research landscape as well. Absolute recommendation.
+          </blockquote>
+        </div>
+      </div>
+            <div class="carousel-item">
+        <div class="quote-card">
+          <blockquote>
+            It was an awesome experience. Everyone was approachable and nice. Definitely recommended!
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
