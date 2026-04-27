@@ -12,6 +12,8 @@
   <style>
     body { background: #f7f6f3; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
     .quote-card { background: #fff; border: 1px solid #e5e3de; border-radius: 12px; padding: 2.5rem 2.5rem 2rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; min-height: 160px; }
+    .carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(1) grayscale(1) brightness(0.4); }
+    .container { padding-bottom: 3rem; }
     .carousel-indicators li { background-color: #aaa; }
     .carousel-indicators .active { background-color: #555; }
 
@@ -19,6 +21,7 @@
       font-family: Georgia, serif;
       font-size: 18px;
       font-style: italic;
+      left: 50px;
       width: 500px;
       margin: 0.25em 0;
       padding: 0.25em 40px;
@@ -39,18 +42,29 @@
   </style>
 </head>
 <body>
-<div class="container" style="max-width: 640px;">
+<div class="container" style="max-width: 700px;">
   <div id="quoteCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#quoteCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#quoteCarousel" data-slide-to="1"></li>
-      <li data-target="#quoteCarousel" data-slide-to="2"></li>
-      <li data-target="#quoteCarousel" data-slide-to="3"></li>
-      <li data-target="#quoteCarousel" data-slide-to="4"></li>
-      <li data-target="#quoteCarousel" data-slide-to="5"></li>
-      <li data-target="#quoteCarousel" data-slide-to="6"></li>
-      <li data-target="#quoteCarousel" data-slide-to="7 "></li>
-    </ol>
+    <div class="carousel-controls-row">
+      <a class="carousel-control-prev" href="#quoteCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <ol class="carousel-indicators">
+        <li data-target="#quoteCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#quoteCarousel" data-slide-to="1"></li>
+        <li data-target="#quoteCarousel" data-slide-to="2"></li>
+        <li data-target="#quoteCarousel" data-slide-to="3"></li>
+        <li data-target="#quoteCarousel" data-slide-to="4"></li>
+        <li data-target="#quoteCarousel" data-slide-to="5"></li>
+        <li data-target="#quoteCarousel" data-slide-to="6"></li>
+        <li data-target="#quoteCarousel" data-slide-to="7"></li>
+      </ol>
+      <a class="carousel-control-next" href="#quoteCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="quote-card">
