@@ -12,6 +12,8 @@
   <style>
     body { background: #f7f6f3; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
     .quote-card { background: #fff; border: 1px solid #e5e3de; border-radius: 12px; padding: 2.5rem 2.5rem 2rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; min-height: 160px; }
+    .carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(1) grayscale(1) brightness(0.4); }
+    .container { padding-bottom: 3rem; }
     .carousel-indicators li { background-color: #aaa; }
     .carousel-indicators .active { background-color: #555; }
 
@@ -19,6 +21,7 @@
       font-family: Georgia, serif;
       font-size: 18px;
       font-style: italic;
+      left: 50px;
       width: 500px;
       margin: 0.25em 0;
       padding: 0.25em 40px;
@@ -39,100 +42,112 @@
   </style>
 </head>
 <body>
-<div class="container" style="max-width: 640px;">
+<div class="container" style="max-width: 700px;">
   <div id="quoteCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#quoteCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#quoteCarousel" data-slide-to="1"></li>
-      <li data-target="#quoteCarousel" data-slide-to="2"></li>
-      <li data-target="#quoteCarousel" data-slide-to="3"></li>
-      <li data-target="#quoteCarousel" data-slide-to="4"></li>
-      <li data-target="#quoteCarousel" data-slide-to="5"></li>
-      <li data-target="#quoteCarousel" data-slide-to="6"></li>
-      <li data-target="#quoteCarousel" data-slide-to="7"></li>
-      <li data-target="#quoteCarousel" data-slide-to="8"></li>
+
+    <div class="carousel-controls-row">
+      <a class="carousel-control-prev" href="#quoteCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <ol class="carousel-indicators">
+        <li data-target="#quoteCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#quoteCarousel" data-slide-to="1"></li>
+        <li data-target="#quoteCarousel" data-slide-to="2"></li>
+        <li data-target="#quoteCarousel" data-slide-to="3"></li>
+        <li data-target="#quoteCarousel" data-slide-to="4"></li>
+        <li data-target="#quoteCarousel" data-slide-to="5"></li>
+        <li data-target="#quoteCarousel" data-slide-to="6"></li>
+        <li data-target="#quoteCarousel" data-slide-to="7"></li>
+        <li data-target="#quoteCarousel" data-slide-to="8"></li>
       <li data-target="#quoteCarousel" data-slide-to="9"></li>
       <li data-target="#quoteCarousel" data-slide-to="10"></li>
       <li data-target="#quoteCarousel" data-slide-to="11"></li>
       <li data-target="#quoteCarousel" data-slide-to="12"></li>
       <li data-target="#quoteCarousel" data-slide-to="13"></li>
-    </ol>
+      </ol>
+      <a class="carousel-control-next" href="#quoteCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="quote-card">
           <blockquote>
             It was a fantastic event! A very good balance of different topics. Interesting speakers, interesting audience!
-            Having different viewpoints from a technical, academic, industry and legal standpoint was a huge added value. (2023)
+            Having different viewpoints from a technical, academic, industry and legal standpoint was a huge added value. <b>(2023)</b
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            The event was amazing! The speakers were on point and it covered such wide, relevant subject matter. I particularly loved the industry session. (2023)
+            The event was amazing! The speakers were on point and it covered such wide, relevant subject matter. I particularly loved the industry session. <b>(2023)</b
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            I met some incredible people. PhD students, professors, employees of industry leading companies and many other interesting people. Very informative overview of most recent research landscape as well. Absolute recommendation. (2025)
+            I met some incredible people. PhD students, professors, employees of industry leading companies and many other interesting people. Very informative overview of most recent research landscape as well. Absolute recommendation. <b>(2025)</b>
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            It was a very pleasent summer school overall. (2024)
+            It was a very pleasent summer school overall. <b>(2024)</b
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote> 
-            The event was great, thank you for organizing this unique summer school! (2023)
+            The event was great, thank you for organizing this unique summer school! <b>(2023)</b
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            Simply amazing :) (2023)
+            Simply amazing :) <b>(2023)</b
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-             Highly recommended! (2025)
+             Highly recommended! <b>(2025)</b>
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-             I would definitely recommend it! (2025)
+             I would definitely recommend it! <b>(2025)</b>
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            The event was very satisfactory to me. (2024)
+            The event was very satisfactory to me. <b>(2024)</b
           </blockquote>
         </div>
       </div>
             <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            It was an awesome experience. Everyone was approachable and nice. Definitely recommended! (2025)
+            It was an awesome experience. Everyone was approachable and nice. Definitely recommended! <b>(2025)</b>
           </blockquote>
         </div>
         </div>
         <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            Excellent job by the organisers! Compliments to the entire team! (2024)
+            Excellent job by the organisers! Compliments to the entire team! <b>(2024)</b
           </blockquote>
         </div>
       </div>
@@ -140,21 +155,21 @@
             <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            It was really well organised and very interesting all around, I was happy to be able to be a part of it. (2023)
+            It was really well organised and very interesting all around, I was happy to be able to be a part of it. <b>(2023)</b
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            Yes the school is well structured and it has a sound program. (2025)
+            Yes the school is well structured and it has a sound program. <b>(2025)</b>
           </blockquote>
         </div>
       </div>
       <div class="carousel-item">
         <div class="quote-card">
           <blockquote>
-            Well organized. (2024)
+            Well organized. <b>(2024)</b
           </blockquote>
         </div>
       </div>
