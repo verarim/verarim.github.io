@@ -24,7 +24,7 @@ nav_order: 3
 - Co-Organizer: [Dagstuhl Seminar on Security and Privacy of Large Language Models](https://www.dagstuhl.de/en/seminars/seminar-calendar/seminar-details/25461), 2025.
 - Organizing Co-Chair: [PhD Summer School on Security and Privacy in the Age of AI](https://cybersecurity-research.be/summer-school-on-security-privacy-in-the-age-of-ai-2025), 2025.
 - Program Co-Chair: [4th Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2025/), 2025.
-- Organizing Co-Chair: [PhD Summer School on Security and Privacy in the Age of AI](https://cybersecurity-research.be/summer-school-on-security-privacy-in-the-age-of-ai-2024), 2024.
+- Organizing Co-Chair: PhD Summer School on Security and Privacy in the Age of AI, 2024.
 - Program Co-Chair: [3rd Workshop on Rethinking Malware Analysis (WoRMA)](https://worma.gitlab.io/2024/), 2024.
 - Organizing Co-Chair: PhD Summer School on Security and Privacy in the Age of AI, 2023.
 - Mentoring Co-Chair: IEEE EuroS&P, 2023.
