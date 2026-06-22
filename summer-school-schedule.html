@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhD Summer School — Security &amp; Privacy in the Age of AI</title>
+<style>
+:root {
+  --primary: #1a3a6b;
+  --primary-light: #e8eef8;
+  --lecture-color: #2563eb;
+  --lecture-bg: #eff6ff;
+  --industry-color: #c2750a;
+  --industry-bg: #fffbeb;
+  --poster-color: #7c3aed;
+  --poster-bg: #f5f3ff;
+  --panel-color: #0e7490;
+  --panel-bg: #ecfeff;
+  --social-color: #16a34a;
+  --social-bg: #f0fdf4;
+  --general-color: #374151;
+  --general-bg: #f3f4f6;
+  --break-color: #64748b;
+  --break-bg: #e2e8f0;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --bg: #f8fafc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  background: linear-gradient(135deg, #1a3a6b 0%, #2d5aa0 100%);
+  color: white;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+}
+header h1 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+header p { font-size: 0.95rem; opacity: 0.8; letter-spacing: 0.03em; }
+
+/* ── STICKY NAV ── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* ── VIEW TOGGLE ── */
+.view-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.vtb {
+  padding: 0.38rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.vtb:first-child { border-radius: 6px 0 0 6px; border-right: none; }
+.vtb:last-child  { border-radius: 0 6px 6px 0; }
+.vtb.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+/* ── DAY TABS (tab view only) ── */
+.day-tabs { display: flex; border-bottom: 2px solid var(--border); }
+.day-tab {
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, background 0.15s;
+  text-align: center;
+}
+.day-tab:hover { color: var(--primary); background: var(--primary-light); }
+.day-tab.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 700; }
+.day-tab .dn { display: block; font-size: 0.9rem; }
+.day-tab .dd { display: block; font-size: 0.72rem; opacity: 0.65; margin-top: 1px; }
+
+/* ══════════════════════════════════════
+   TAB VIEW
+══════════════════════════════════════ */
+.day-panel { display: none; padding: 1.75rem 1.5rem 3rem; max-width: 760px; margin: 0 auto; }
+.day-panel.active { display: block; }
+
+.session {
+  background: white;
+  border-radius: 10px;
+  border-left: 4px solid;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  transition: box-shadow 0.15s;
+}
+.session:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.session.lecture  { border-left-color: var(--lecture-color); }
+.session.industry { border-left-color: var(--industry-color); }
+.session.poster   { border-left-color: var(--poster-color); }
+.session.panel    { border-left-color: var(--panel-color); }
+.session.social   { border-left-color: var(--social-color); }
+.session.general { border-left-color: var(--general-color); }
+.session.break    { border-left-color: var(--break-color); }
+
+.session-time {
+  min-width: 105px;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 600;
+  padding-top: 3px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.session-content { flex: 1; }
+.session-badge {
+  display: inline-block;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.35rem;
+}
+.badge-lecture  { background: var(--lecture-bg);  color: var(--lecture-color); }
+.badge-industry { background: var(--industry-bg); color: var(--industry-color); }
+.badge-poster   { background: var(--poster-bg);   color: var(--poster-color); }
+.badge-panel    { background: var(--panel-bg);    color: var(--panel-color); }
+.badge-social   { background: var(--social-bg);   color: var(--social-color); }
+.badge-general { background: var(--general-bg); color: var(--general-color); }
+.badge-break    { background: var(--break-bg);    color: var(--break-color); }
+.session-title { font-weight: 600; font-size: 0.97rem; margin-bottom: 0.2rem; line-height: 1.35; }
+.session-speaker { font-size: 0.82rem; color: var(--text-light); }
+
+.day-banner {
+  background: linear-gradient(90deg, #fffbeb, #fef3c7);
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--industry-color);
+  font-size: 0.82rem;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  margin-bottom: 1.5rem;
+  padding: 0.7rem 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--text-light); font-weight: 500; }
+.legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.break-label {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.break-label::before, .break-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ══════════════════════════════════════
+   GRID VIEW
+══════════════════════════════════════ */
+#view-grid { display: none; }
+.grid-scroll { overflow-x: auto; padding-bottom: 3rem; }
+
+.timetable { min-width: 660px; }
+
+.tt-header {
+  display: flex;
+  background: white;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  z-index: 8;
+}
+.tt-time-spacer { width: 52px; flex-shrink: 0; }
+.tt-day-hdr {
+  flex: 1;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  border-left: 1px solid var(--border);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+.tt-day-hdr .date { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-light); }
+.tt-day-hdr .ind-tag {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--industry-color);
+  background: var(--industry-bg);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+.tt-body { display: flex; }
+.tt-time-col { width: 52px; flex-shrink: 0; position: relative; }
+.tt-time-label {
+  position: absolute;
+  right: 6px;
+  font-size: 0.68rem;
+  color: var(--text-light);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.tt-day-col { flex: 1; position: relative; border-left: 1px solid var(--border); }
+.tt-hline { position: absolute; left: 0; right: 0; pointer-events: none; }
+.tt-hline.hour     { height: 1px; background: var(--border); }
+.tt-hline.halfhour { height: 1px; background: #f1f5f9; }
+
+/* grid session blocks */
+.tt-session {
+  position: absolute;
+  left: 3px; right: 3px;
+  border-radius: 5px;
+  padding: 3px 5px;
+  overflow: hidden;
+  cursor: default;
+  border-left: 3px solid transparent;
+  transition: box-shadow 0.15s, z-index 0s;
+}
+.tt-session:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.18); z-index: 3; }
+.tt-session.lecture  { background: var(--lecture-bg);  border-left-color: var(--lecture-color); }
+.tt-session.industry { background: var(--industry-bg); border-left-color: var(--industry-color); }
+.tt-session.poster   { background: var(--poster-bg);   border-left-color: var(--poster-color); }
+.tt-session.panel    { background: var(--panel-bg);    border-left-color: var(--panel-color); }
+.tt-session.social   { background: var(--social-bg);   border-left-color: var(--social-color); }
+.tt-session.general { background: var(--general-bg); border-left-color: var(--general-color); }
+.tt-session.break    { background: var(--break-bg);    border-left-color: var(--break-color); }
+.tt-s-time    { font-size: 0.63rem; font-weight: 600; color: var(--text-light); display: block; line-height: 1.3; }
+.tt-s-title   { font-size: 0.73rem; font-weight: 700; color: var(--text); line-height: 1.25; margin-top: 1px; }
+.tt-s-speaker { font-size: 0.65rem; color: var(--text-light); margin-top: 1px; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-light);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--border);
+  background: white;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>PhD Summer School on Security and Privacy<br>in the Age of AI</h1>
+  <p>Leuven &nbsp;·&nbsp; September 8–11, 2026</p>
+</header>
+
+<div class="sticky-nav" id="sticky-nav">
+  <div class="view-toggle">
+    <button class="vtb"        id="btn-tabs" onclick="setView('tabs')">Day by Day</button>
+    <button class="vtb active" id="btn-grid" onclick="setView('grid')">All Days Side by Side</button>
+  </div>
+  <div class="day-tabs" id="day-tabs">
+    <button class="day-tab active" onclick="showDay('tue',this)"><span class="dn">Tuesday</span><span class="dd">Sep 8</span></button>
+    <button class="day-tab"        onclick="showDay('wed',this)"><span class="dn">Wednesday</span><span class="dd">Sep 9</span></button>
+    <button class="day-tab"        onclick="showDay('thu',this)"><span class="dn">Thursday</span><span class="dd">Sep 10</span></button>
+    <button class="day-tab"        onclick="showDay('fri',this)"><span class="dn">Friday</span><span class="dd">Sep 11</span></button>
+  </div>
+</div>
+
+<!-- TAB VIEW -->
+<div id="view-tabs">
+  <div id="day-tue" class="day-panel active"></div>
+  <div id="day-wed" class="day-panel"></div>
+  <div id="day-thu" class="day-panel"></div>
+  <div id="day-fri" class="day-panel"></div>
+</div>
+
+<!-- GRID VIEW -->
+<div id="view-grid">
+  <div class="grid-scroll">
+    <div class="timetable" id="timetable"></div>
+  </div>
+</div>
+
+<footer>
+  PhD Summer School on Security and Privacy in the Age of AI &nbsp;·&nbsp; Leuven, September 8–11, 2026
+</footer>
+
+<script>
+// ─────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────
+const DAYS = [
+  { id: 'tue', label: 'Tuesday',   date: 'Sep 8' },
+  { id: 'wed', label: 'Wednesday', date: 'Sep 9' },
+  { id: 'thu', label: 'Thursday',  date: 'Sep 10', banner: 'Industry Day' },
+  { id: 'fri', label: 'Friday',    date: 'Sep 11' },
+];
+
+const SESSIONS = {
+  tue: [
+    { start:'13:30', end:'13:45', type:'general', badge:'Opening',       title:'Welcome & Opening',                    speaker:'' },
+    { start:'13:45', end:'15:15', type:'lecture',  badge:'Lecture',       title:'Intro to ML for Cybersecurity',                speaker:'Luca Demetrio' },
+    { start:'15:15', end:'15:45', type:'break',    badge:'Coffee Break',  title:'Coffee Break',                                 speaker:'' },
+    { start:'15:45', end:'17:45', type:'lecture',  badge:'Lecture',       title:'Intro to Security and Privacy of AI and LLMs', speaker:'Katharine Jarmul?' },
+    { start:'19:00', end:'20:30', type:'social',   badge:'Social',        title:'City Tour (optional)',                         speaker:'' },
+  ],
+  wed: [
+    { start:'09:30', end:'10:30', type:'lecture',  badge:'Lecture',       title:'AI for Systems Security',        speaker:'Lorenzo Cavallaro' },
+    { start:'10:30', end:'11:00', type:'break',    badge:'Break',         title:'Break',                          speaker:'' },
+    { start:'11:00', end:'12:00', type:'lecture',  badge:'Lecture',       title:'AI/LLM Vulnerability Discovery', speaker:'Adriana Sejfia' },
+    { start:'12:00', end:'13:30', type:'break',    badge:'Lunch',         title:'Lunch',                          speaker:'' },
+    { start:'13:30', end:'15:00', type:'lecture',  badge:'Lecture',       title:'Privacy-Preserving AI',          speaker:'Dmitrii Usynin' },
+    { start:'15:00', end:'15:30', type:'break',    badge:'Coffee Break',  title:'Coffee Break',                   speaker:'' },
+    { start:'15:30', end:'17:00', type:'poster',   badge:'Poster Session',title:'Poster Session — Part 1',        speaker:'' },
+    { start:'19:00', end:'22:00', type:'social',   badge:'Social',        title:'Social Dinner',                  speaker:'' },
+  ],
+  thu: [
+    { start:'12:00', end:'13:00', type:'break',    badge:'Lunch',               title:'Lunch',                                                  speaker:'' },
+    { start:'13:00', end:'14:00', type:'lecture',  badge:'Academic Perspective', title:'Safety Alignment and Benchmarking',                      speaker:'Sahar Abdelnabi' },
+    { start:'14:00', end:'15:10', type:'lecture',  badge:'Academic Perspective', title:'Security & Privacy of Agents',                           speaker:'Eugene Bagdasarian' },
+    { start:'15:10', end:'15:40', type:'break',    badge:'Coffee Break',         title:'Coffee Break',                                           speaker:'' },
+    { start:'15:40', end:'16:30', type:'industry', badge:'Industry Perspective', title:'XBOW; Mythos',                                           speaker:'' },
+    { start:'16:30', end:'17:20', type:'lecture',  badge:'Academic Perspective', title:'Demystifying the Mythos or Disrupting Bugonomics?',      speaker:'Lorenzo Cavallaro' },
+    { start:'17:30', end:'18:30', type:'panel',    badge:'Discussion Panel',     title:'Discussion Panel 1',                                     speaker:'' },
+    { start:'18:30', end:'20:30', type:'social',   badge:'Social',               title:'Networking Reception',                                   speaker:'' },
+  ],
+  fri: [
+    { start:'09:30', end:'10:30', type:'lecture',  badge:'Lecture',        title:'Watermarking and Fingerprinting of GenAI', speaker:'Marc Juarez' },
+    { start:'10:30', end:'11:00', type:'break',    badge:'Break',          title:'Break',                                    speaker:'' },
+    { start:'11:00', end:'12:00', type:'poster',   badge:'Poster Session', title:'Poster Session — Part 2',                  speaker:'' },
+    { start:'12:00', end:'13:30', type:'break',    badge:'Lunch',          title:'Lunch',                                    speaker:'' },
+    { start:'13:30', end:'14:30', type:'lecture',  badge:'Lecture',        title:'AI Governance (EU Act)',                   speaker:'TBA' },
+    { start:'14:30', end:'15:00', type:'break',    badge:'Cofee Break',    title:'Coffee Break',                                    speaker:'' },
+    { start:'15:00', end:'16:00', type:'panel',    badge:'Discussion Panel',title:'Discussion Panel 2',                      speaker:'' },
+    { start:'16:00', end:'16:15', type:'general', badge:'Closing',        title:'Closing Session',                          speaker:'' },
+  ],
+};
+
+const BREAKS = {
+  tue: [{ after:'17:45', label:'Evening' }],
+  wed: [{ after:'17:00', label:'Evening' }],
+  thu: [],
+  fri: [],
+};
+
+const TYPE_LABELS = {
+  lecture:'Lecture', industry:'Industry Talk', poster:'Poster Session',
+  panel:'Discussion Panel', social:'Social', general:'General', break:'Break',
+};
+const TYPE_COLORS = {
+  lecture:'var(--lecture-color)', industry:'var(--industry-color)', poster:'var(--poster-color)',
+  panel:'var(--panel-color)', social:'var(--social-color)', general:'var(--general-color)', break:'var(--break-color)',
+};
+
+// ─────────────────────────────────────────
+// GRID HELPERS
+// ─────────────────────────────────────────
+const G_START = 9 * 60;      // 09:00
+const G_END   = 22 * 60 + 30; // 22:30
+const PPM     = 1.5;          // px per minute
+const G_H     = (G_END - G_START) * PPM;
+const MIN_H   = 28;
+
+function toMin(t) { const [h,m] = t.split(':').map(Number); return h*60+m; }
+function topOf(t) { return (toMin(t) - G_START) * PPM; }
+function heightOf(s, e) { return Math.max((toMin(e) - toMin(s)) * PPM, MIN_H); }
+
+// ─────────────────────────────────────────
+// RENDER TAB VIEW
+// ─────────────────────────────────────────
+function renderTabs() {
+  DAYS.forEach(day => {
+    const panel = document.getElementById('day-' + day.id);
+    const sessions = SESSIONS[day.id];
+    const breaks   = BREAKS[day.id] || [];
+    const types    = [...new Set(sessions.map(s => s.type))];
+    let h = '';
+
+    if (day.banner) h += `<div class="day-banner">⚙&nbsp; ${day.banner}</div>`;
+
+    h += '<div class="legend">';
+    types.forEach(t => {
+      h += `<span class="legend-item"><span class="legend-dot" style="background:${TYPE_COLORS[t]}"></span>${TYPE_LABELS[t]}</span>`;
+    });
+    h += '</div>';
+
+    sessions.forEach(s => {
+      h += `
+        <div class="session ${s.type}">
+          <div class="session-time">${s.start} – ${s.end}</div>
+          <div class="session-content">
+            <div class="session-badge badge-${s.type}">${s.badge}</div>
+            <div class="session-title">${s.title}</div>
+            ${s.speaker ? `<div class="session-speaker">${s.speaker}</div>` : ''}
+          </div>
+        </div>`;
+      const brk = breaks.find(b => b.after === s.end);
+      if (brk) h += `<div class="break-label">${brk.label}</div>`;
+    });
+
+    panel.innerHTML = h;
+  });
+}
+
+// ─────────────────────────────────────────
+// RENDER GRID VIEW
+// ─────────────────────────────────────────
+function renderGrid() {
+  // Header row
+  let h = `<div class="tt-header" id="tt-hdr"><div class="tt-time-spacer"></div>`;
+  DAYS.forEach(day => {
+    h += `<div class="tt-day-hdr">${day.label}<span class="date">${day.date}</span>
+      ${day.banner ? `<span class="ind-tag">⚙ ${day.banner}</span>` : ''}</div>`;
+  });
+  h += `</div>`;
+
+  // Body
+  h += `<div class="tt-body">`;
+
+  // Time column
+  h += `<div class="tt-time-col" style="height:${G_H}px">`;
+  for (let hr = 9; hr <= 22; hr++) {
+    const top = (hr * 60 - G_START) * PPM;
+    h += `<div class="tt-time-label" style="top:${top}px">${hr}:00</div>`;
+  }
+  h += `</div>`;
+
+  // Day columns
+  DAYS.forEach(day => {
+    h += `<div class="tt-day-col" style="height:${G_H}px">`;
+
+    // Hour & half-hour lines
+    for (let hr = 9; hr <= 22; hr++) {
+      const t = (hr * 60 - G_START) * PPM;
+      h += `<div class="tt-hline hour" style="top:${t}px"></div>`;
+      const th = ((hr * 60 + 30) - G_START) * PPM;
+      if (th < G_H) h += `<div class="tt-hline halfhour" style="top:${th}px"></div>`;
+    }
+
+    // Sessions
+    SESSIONS[day.id].forEach(s => {
+      const top = topOf(s.start);
+      const ht  = heightOf(s.start, s.end);
+      const showTime    = ht >= 36;
+      const showSpeaker = ht >= 52 && s.speaker;
+      const tooltip     = s.title + (s.speaker ? ` — ${s.speaker}` : '') + `\n${s.start}–${s.end}`;
+      h += `
+        <div class="tt-session ${s.type}" style="top:${top}px;height:${ht}px" title="${tooltip}">
+          ${showTime ? `<span class="tt-s-time">${s.start}</span>` : ''}
+          <div class="tt-s-title">${s.title}</div>
+          ${showSpeaker ? `<div class="tt-s-speaker">${s.speaker}</div>` : ''}
+        </div>`;
+    });
+
+    h += `</div>`;
+  });
+
+  h += `</div>`; // tt-body
+  document.getElementById('timetable').innerHTML = h;
+  updateGridHeaderTop();
+}
+
+function updateGridHeaderTop() {
+  const hdr = document.getElementById('tt-hdr');
+  if (hdr) hdr.style.top = document.getElementById('sticky-nav').offsetHeight + 'px';
+}
+
+// ─────────────────────────────────────────
+// VIEW SWITCHING
+// ─────────────────────────────────────────
+function setView(view) {
+  const isGrid = view === 'grid';
+  document.getElementById('view-tabs').style.display = isGrid ? 'none' : 'block';
+  document.getElementById('view-grid').style.display = isGrid ? 'block' : 'none';
+  document.getElementById('day-tabs').style.display  = isGrid ? 'none' : 'flex';
+  document.getElementById('btn-tabs').classList.toggle('active', !isGrid);
+  document.getElementById('btn-grid').classList.toggle('active',  isGrid);
+  if (isGrid) updateGridHeaderTop();
+}
+
+function showDay(day, btn) {
+  document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('day-' + day).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────
+renderTabs();
+renderGrid();
+setView('grid');
+</script>
+</body>
+</html>
