@@ -14,8 +14,8 @@
   --industry-bg: #fffbeb;
   --poster-color: #7c3aed;
   --poster-bg: #f5f3ff;
-  --panel-color: #0e7490;
-  --panel-bg: #ecfeff;
+  --panel-color: #be185d;
+  --panel-bg: #fce7f3;
   --social-color: #16a34a;
   --social-bg: #f0fdf4;
   --general-color: #374151;
@@ -336,6 +336,15 @@ footer {
 
 <!-- GRID VIEW -->
 <div id="view-grid">
+  <div class="legend" style="margin:1rem 1.5rem 0;">
+    <span class="legend-item"><span class="legend-dot" style="background:var(--lecture-color)"></span>Lecture</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--industry-color)"></span>Industry Talk</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--poster-color)"></span>Poster Session</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--panel-color)"></span>Discussion Panel</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--social-color)"></span>Social</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--break-color)"></span>Break / Lunch</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--general-color)"></span>General</span>
+  </div>
   <div class="grid-scroll">
     <div class="timetable" id="timetable"></div>
   </div>
@@ -358,30 +367,30 @@ const DAYS = [
 
 const SESSIONS = {
   tue: [
-    { start:'12:30', end:'13:30', type:'general', badge:'Lunch',       title:'Lunch & Registration',                    speaker:'' },
+    { start:'12:30', end:'13:30', type:'general', badge:'Registration',       title:'Lunch & Registration',                    speaker:'' },
     { start:'13:30', end:'13:45', type:'general', badge:'Opening',       title:'Welcome & Opening',                    speaker:'' },
     { start:'13:45', end:'15:15', type:'lecture',  badge:'Lecture',       title:'ML for Cybersecurity (Malware Detection)',                speaker:'Luca Demetrio - University of Genoa' },
-    { start:'15:15', end:'15:45', type:'break',    badge:'Coffee Break',  title:'Coffee Break',                                 speaker:'' },
+    { start:'15:15', end:'15:45', type:'break',    badge:'Break',  title:'Coffee Break',                                 speaker:'' },
     { start:'15:45', end:'17:45', type:'lecture',  badge:'Lecture',       title:'Privacy & Security Risks of AI', speaker:'Katharine Jarmul' },
   ],
   wed: [
     { start:'09:30', end:'10:30', type:'lecture',  badge:'Lecture',       title:'AI for Systems Security',        speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
-    { start:'10:30', end:'11:00', type:'break',    badge:'Coffee Break',  title:'Coffee Break',                   speaker:'' },
+    { start:'10:30', end:'11:00', type:'break',    badge:'Break',  title:'Coffee Break',                   speaker:'' },
     { start:'11:00', end:'12:00', type:'lecture',  badge:'Lecture',       title:'AI/LLM for Vulnerability Discovery', speaker:'Adriana Sejfia - University of Endinburgh' },
-    { start:'12:00', end:'13:30', type:'break',    badge:'Lunch',         title:'Lunch',                          speaker:'' },
+    { start:'12:00', end:'13:30', type:'break',    badge:'Break',         title:'Lunch',                          speaker:'' },
     { start:'13:30', end:'15:00', type:'lecture',  badge:'Lecture',       title:'Privacy-Preserving AI',          speaker:'Dmitrii Usynin - CyberDesk; former Huawei & Microsoft Research' },
-    { start:'15:00', end:'15:30', type:'break',    badge:'Break',         title:'Break',                          speaker:'' },
+    { start:'15:00', end:'15:30', type:'break',    badge:'Break',         title:'Coffee Break',                          speaker:'' },
     { start:'15:30', end:'17:00', type:'poster',   badge:'Poster Session',title:'Poster Session — Part 1',        speaker:'' },
     { start:'19:00', end:'22:00', type:'social',   badge:'Social',        title:'Social Dinner',                  speaker:'' },
   ],
   thu: [
     { start:'10:00', end:'12:00', type:'social',   badge:'Social', title:'City Tour (optional)', speaker:'' },
-    { start:'12:00', end:'13:30', type:'break',    badge:'Lunch', title:'Lunch', speaker:'' },
+    { start:'12:00', end:'13:30', type:'break',    badge:'Break', title:'Lunch', speaker:'' },
     { start:'13:30', end:'13:40', type:'general',  badge:'Opening', title:'Industry Day Opening Remarks', speaker:''},
     { start:'13:40', end:'14:25', type:'lecture',  badge:'Lecture', title:'AI Agents May Always Fall for Prompt Injections', speaker:'Sahar Abdelnabi - University of Tübingen, former Microsoft' },
     { start:'14:25', end:'15:10', type:'lecture',  badge:'Lecture', title:'Privacy & Security of Frontier AI Agents', speaker:'Eugene Bagdasarian - UMass Amherst; Google Research' },
-    { start:'15:10', end:'15:40', type:'break',    badge:'Coffee Break', title:'Coffee Break', speaker:'' },
-    { start:'15:40', end:'16:25', type:'lecture', badge:'Lecture', title:'AI Agents for Offensive Security', speaker:'Brendan Dolan-Gavitt - XBOW' },
+    { start:'15:10', end:'15:40', type:'break',    badge:'Break', title:'Coffee Break', speaker:'' },
+    { start:'15:40', end:'16:25', type:'industry', badge:'Industry Talk', title:'AI Agents for Offensive Security', speaker:'Brendan Dolan-Gavitt - XBOW' },
     { start:'16:25', end:'17:10', type:'lecture',  badge:'Lecture', title:'Demystifying the Mythos or Disrupting Bugonomics?', speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
     { start:'17:10', end:'17:25', type:'break',  badge:'Break', title:'Short Break',      speaker:'' },
     { start:'17:25', end:'18:30', type:'panel',    badge:'Discussion Panel', title:'Discussion Panel', speaker:'Moderator: Wouter Joosen - KU Leuven' },
@@ -389,12 +398,12 @@ const SESSIONS = {
   ],
   fri: [
     {start:'9:30', end:'10:30', type:'lecture',   badge:'Lecture', title:'AI Governance and Regulation',                  speaker:'TBA' },
-    { start:'10:30', end:'11:00', type:'break',    badge:'Coffee Break',  title:'Coffee Break',                   speaker:'' },
+    { start:'10:30', end:'11:00', type:'break',    badge:'Break',  title:'Coffee Break',                   speaker:'' },
     { start:'11:00', end:'12:00', type:'lecture',  badge:'Lecture',        title:'Technical Approaches for AI Image Provenance', speaker:'Marc Juarez - University of Endinburgh' 
     },
-    { start:'12:00', end:'13:30', type:'break',    badge:'Lunch',          title:'Lunch',                                    speaker:'' },
+    { start:'12:00', end:'13:30', type:'break',    badge:'Break',          title:'Lunch',                                    speaker:'' },
     { start:'13:30', end:'14:30', type:'poster',  badge:'Poster Session',        title:'Poster Session — Part 2',                   speaker:'' },
-    { start:'14:30', end:'15:00', type:'break',    badge:'Break',         title:'Break',                          speaker:'' },
+    { start:'14:30', end:'15:00', type:'break',    badge:'Break',         title:'Coffee Break',                          speaker:'' },
     { start:'15:00', end:'16:00', type:'panel',    badge:'Discussion Panel',title:'Discussion Panel',                      speaker:'' },
     { start:'16:00', end:'16:15', type:'general', badge:'Closing',        title:'Closing Session',                          speaker:'' },
   ],
@@ -409,7 +418,7 @@ const BREAKS = {
 
 const TYPE_LABELS = {
   lecture:'Lecture', industry:'Industry Talk', poster:'Poster Session',
-  panel:'Discussion Panel', social:'Social', general:'General', break:'Break',
+  panel:'Discussion Panel', social:'Social', break:'Break', general:'General',
 };
 const TYPE_COLORS = {
   lecture:'var(--lecture-color)', industry:'var(--industry-color)', poster:'var(--poster-color)',
