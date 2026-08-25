@@ -250,6 +250,18 @@ header p { font-size: 0.95rem; opacity: 0.8; letter-spacing: 0.03em; }
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+.tt-time-label-half {
+  font-size: 0.60rem;
+  color: #94a3b8;
+}
+.tt-s-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  overflow: hidden;
+}
+.tt-s-inline .tt-s-time  { flex-shrink: 0; }
+.tt-s-inline .tt-s-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 0; }
 .tt-day-col { flex: 1; position: relative; border-left: 1px solid var(--border); }
 .tt-hline { position: absolute; left: 0; right: 0; pointer-events: none; }
 .tt-hline.hour     { height: 1px; background: var(--border); }
@@ -264,9 +276,14 @@ header p { font-size: 0.95rem; opacity: 0.8; letter-spacing: 0.03em; }
   overflow: hidden;
   cursor: default;
   border-left: 3px solid transparent;
-  transition: box-shadow 0.15s, z-index 0s;
+  transition: box-shadow 0.15s, height 0.15s;
 }
-.tt-session:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.18); z-index: 3; }
+.tt-session:hover {
+  overflow: visible;
+  height: auto !important;
+  z-index: 5;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
 .tt-session.lecture  { background: var(--lecture-bg);  border-left-color: var(--lecture-color); }
 .tt-session.industry { background: var(--industry-bg); border-left-color: var(--industry-color); }
 .tt-session.poster   { background: var(--poster-bg);   border-left-color: var(--poster-color); }
@@ -345,7 +362,7 @@ const SESSIONS = {
     { start:'13:30', end:'13:45', type:'general', badge:'Opening',       title:'Welcome & Opening',                    speaker:'' },
     { start:'13:45', end:'15:15', type:'lecture',  badge:'Lecture',       title:'ML for Cybersecurity (Malware Detection)',                speaker:'Luca Demetrio - University of Genoa' },
     { start:'15:15', end:'15:45', type:'break',    badge:'Coffee Break',  title:'Coffee Break',                                 speaker:'' },
-    { start:'15:45', end:'17:45', type:'lecture',  badge:'Lecture',       title:'Security and Privacy Risks of AI', speaker:'Katharine Jarmul' },
+    { start:'15:45', end:'17:45', type:'lecture',  badge:'Lecture',       title:'Privacy & Security Risks of AI', speaker:'Katharine Jarmul' },
   ],
   wed: [
     { start:'09:30', end:'10:30', type:'lecture',  badge:'Lecture',       title:'AI for Systems Security',        speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
@@ -361,8 +378,8 @@ const SESSIONS = {
     { start:'10:00', end:'12:00', type:'social',   badge:'Social', title:'City Tour (optional)', speaker:'' },
     { start:'12:00', end:'13:30', type:'break',    badge:'Lunch', title:'Lunch', speaker:'' },
     { start:'13:30', end:'13:40', type:'general',  badge:'Opening', title:'Industry Day Opening Remarks', speaker:''},
-    { start:'13:40', end:'14:25', type:'lecture',  badge:'Lecture', title:'AI Safety, Alignment, and Benchmarking', speaker:'Sahar Abdelnabi - University of Tübingen, former Microsoft' },
-    { start:'14:25', end:'15:10', type:'lecture',  badge:'Lecture', title:'Security & Privacy of AI Agents', speaker:'Eugene Bagdasarian - UMass Amherst; Google Research' },
+    { start:'13:40', end:'14:25', type:'lecture',  badge:'Lecture', title:'AI Agents May Always Fall for Prompt Injections', speaker:'Sahar Abdelnabi - University of Tübingen, former Microsoft' },
+    { start:'14:25', end:'15:10', type:'lecture',  badge:'Lecture', title:'Privacy & Security of Frontier AI Agents', speaker:'Eugene Bagdasarian - UMass Amherst; Google Research' },
     { start:'15:10', end:'15:40', type:'break',    badge:'Coffee Break', title:'Coffee Break', speaker:'' },
     { start:'15:40', end:'16:25', type:'lecture', badge:'Lecture', title:'AI Agents for Offensive Security', speaker:'Brendan Dolan-Gavitt - XBOW' },
     { start:'16:25', end:'17:10', type:'lecture',  badge:'Lecture', title:'Demystifying the Mythos or Disrupting Bugonomics?', speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
@@ -469,6 +486,8 @@ function renderGrid() {
   for (let hr = 9; hr <= 22; hr++) {
     const top = (hr * 60 - G_START) * PPM;
     h += `<div class="tt-time-label" style="top:${top}px">${hr}:00</div>`;
+    const topHalf = ((hr * 60 + 30) - G_START) * PPM;
+    if (topHalf < G_H) h += `<div class="tt-time-label tt-time-label-half" style="top:${topHalf}px">${hr}:30</div>`;
   }
   h += `</div>`;
 
@@ -488,14 +507,14 @@ function renderGrid() {
     SESSIONS[day.id].forEach(s => {
       const top = topOf(s.start);
       const ht  = heightOf(s.start, s.end);
-      const showTime    = ht >= 36;
-      const showSpeaker = ht >= 52 && s.speaker;
-      const tooltip     = s.title + (s.speaker ? ` — ${s.speaker}` : '') + `\n${s.start}–${s.end}`;
+      const compact = ht < 36;
+      const tooltip = s.title + (s.speaker ? ` — ${s.speaker}` : '') + `\n${s.start}–${s.end}`;
+      const inner = compact
+        ? `<div class="tt-s-inline"><span class="tt-s-time">${s.start}</span><span class="tt-s-title">${s.title}</span></div>`
+        : `<span class="tt-s-time">${s.start}</span><div class="tt-s-title">${s.title}</div>${s.speaker ? `<div class="tt-s-speaker">${s.speaker}</div>` : ''}`;
       h += `
-        <div class="tt-session ${s.type}" style="top:${top}px;height:${ht}px" title="${tooltip}">
-          ${showTime ? `<span class="tt-s-time">${s.start}</span>` : ''}
-          <div class="tt-s-title">${s.title}</div>
-          ${showSpeaker ? `<div class="tt-s-speaker">${s.speaker}</div>` : ''}
+        <div class="tt-session ${s.type}" style="top:${top}px;min-height:${ht}px;height:${ht}px" title="${tooltip}">
+          ${inner}
         </div>`;
     });
 
