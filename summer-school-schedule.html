@@ -367,14 +367,14 @@ const DAYS = [
 
 const SESSIONS = {
   tue: [
-    { start:'12:30', end:'13:30', type:'general', badge:'Registration',       title:'Lunch & Registration',                    speaker:'' },
+    { start:'12:15', end:'13:30', type:'general', badge:'Registration',       title:'Lunch & Registration',                    speaker:'' },
     { start:'13:30', end:'13:45', type:'general', badge:'Opening',       title:'Welcome & Opening',                    speaker:'' },
     { start:'13:45', end:'15:15', type:'lecture',  badge:'Lecture',       title:'ML for Cybersecurity (Malware Detection)',                speaker:'Luca Demetrio - University of Genoa' },
     { start:'15:15', end:'15:45', type:'break',    badge:'Break',  title:'Coffee Break',                                 speaker:'' },
     { start:'15:45', end:'17:45', type:'lecture',  badge:'Lecture',       title:'Privacy & Security Risks of AI', speaker:'Katharine Jarmul' },
   ],
   wed: [
-    { start:'09:30', end:'10:30', type:'lecture',  badge:'Lecture',       title:'AI for Systems Security',        speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
+    { start:'09:00', end:'10:30', type:'lecture',  badge:'Lecture',       title:'AI for Systems Security',        speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
     { start:'10:30', end:'11:00', type:'break',    badge:'Break',  title:'Coffee Break',                   speaker:'' },
     { start:'11:00', end:'12:00', type:'lecture',  badge:'Lecture',       title:'AI/LLM for Vulnerability Discovery', speaker:'Adriana Sejfia - University of Endinburgh' },
     { start:'12:00', end:'13:30', type:'break',    badge:'Break',         title:'Lunch',                          speaker:'' },
@@ -387,13 +387,13 @@ const SESSIONS = {
     { start:'10:00', end:'12:00', type:'social',   badge:'Social', title:'City Tour (optional)', speaker:'' },
     { start:'12:00', end:'13:30', type:'break',    badge:'Break', title:'Lunch', speaker:'' },
     { start:'13:30', end:'13:40', type:'general',  badge:'Opening', title:'Industry Day Opening Remarks', speaker:''},
-    { start:'13:40', end:'14:25', type:'lecture',  badge:'Lecture', title:'AI Agents May Always Fall for Prompt Injections', speaker:'Sahar Abdelnabi - University of Tübingen, former Microsoft' },
+    { start:'13:40', end:'14:25', type:'lecture',  badge:'Lecture', title:'AI Agents May Always Fall for Prompt Injections: Casting Prompt Injection via the Lens of Contextual Integrity', speaker:'Sahar Abdelnabi - University of Tübingen, former Microsoft' },
     { start:'14:25', end:'15:10', type:'lecture',  badge:'Lecture', title:'Privacy & Security of Frontier AI Agents', speaker:'Eugene Bagdasarian - UMass Amherst; Google Research' },
     { start:'15:10', end:'15:40', type:'break',    badge:'Break', title:'Coffee Break', speaker:'' },
     { start:'15:40', end:'16:25', type:'industry', badge:'Industry Talk', title:'AI Agents for Offensive Security', speaker:'Brendan Dolan-Gavitt - XBOW' },
     { start:'16:25', end:'17:10', type:'lecture',  badge:'Lecture', title:'Demystifying the Mythos or Disrupting Bugonomics?', speaker:'Lorenzo Cavallaro - University College London; BynarIO' },
     { start:'17:10', end:'17:25', type:'break',  badge:'Break', title:'Short Break',      speaker:'' },
-    { start:'17:25', end:'18:30', type:'panel',    badge:'Discussion Panel', title:'Discussion Panel', speaker:'Moderator: Wouter Joosen - KU Leuven' },
+    { start:'17:25', end:'18:30', type:'panel',    badge:'Discussion Panel', title:'Discussion Panel on Bridging Academic Research and Practice', speaker:'With lecturers and invited experts. Moderated by Wouter Joosen — KU Leuven' },
     { start:'18:30', end:'20:30', type:'social',   badge:'Social', title:'Networking Reception', speaker:'' },
   ],
   fri: [
@@ -401,11 +401,10 @@ const SESSIONS = {
     { start:'10:30', end:'11:00', type:'break',    badge:'Break',  title:'Coffee Break',                   speaker:'' },
     { start:'11:00', end:'12:00', type:'lecture',  badge:'Lecture',        title:'Technical Approaches for AI Image Provenance', speaker:'Marc Juarez - University of Endinburgh' 
     },
-    { start:'12:00', end:'13:30', type:'break',    badge:'Break',          title:'Lunch',                                    speaker:'' },
-    { start:'13:30', end:'14:30', type:'poster',  badge:'Poster Session',        title:'Poster Session — Part 2',                   speaker:'' },
-    { start:'14:30', end:'15:00', type:'break',    badge:'Break',         title:'Coffee Break',                          speaker:'' },
-    { start:'15:00', end:'16:00', type:'panel',    badge:'Discussion Panel',title:'Discussion Panel',                      speaker:'' },
-    { start:'16:00', end:'16:15', type:'general', badge:'Closing',        title:'Closing Session',                          speaker:'' },
+    { start:'12:00', end:'13:00', type:'break',    badge: 'Break',          title:'Lunch',                                    speaker:'' },
+    { start:'13:00', end:'14:00', type:'panel',  badge: 'Discussion Panel',        title: 'Discussion Panel on Impact of GenAI on Research and Society',                   speaker:'With lecturers and invited experts.\nModerated by Vera Rimmer — KU Leuven' },
+    { start:'14:00', end:'14:15', type:'general', badge: 'Closing',       title: 'Closing Session',                    speaker:'' },
+    { start:'14:15', end:'15:30', type:'poster',    badge:'Poster Session', title:'Poster Session — Part 2',                      speaker:'(includes coffee & snack)' }
   ],
 };
 
@@ -428,7 +427,7 @@ const TYPE_COLORS = {
 // ─────────────────────────────────────────
 // GRID HELPERS
 // ─────────────────────────────────────────
-const G_START = 9 * 60;      // 09:00
+const G_START = 8.5 * 60;      // 09:00
 const G_END   = 22 * 60 + 30; // 22:30
 const PPM     = 1.5;          // px per minute
 const G_H     = (G_END - G_START) * PPM;
